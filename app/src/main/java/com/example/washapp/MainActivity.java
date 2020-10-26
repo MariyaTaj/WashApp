@@ -22,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     String userName = "";
     String userPassword = "";
 
+    public void btn_SignUpForm(View view) {
+
+        startActivity(new Intent(getApplicationContext(),SignUpForm.class));
+    }
+
     /* Class to hold credentials */
     class Credentials
     {
@@ -35,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Login");
 
         /* Bind the XML views to Java Code Elements */
         eName = findViewById(R.id.etName);

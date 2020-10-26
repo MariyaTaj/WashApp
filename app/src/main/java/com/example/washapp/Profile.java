@@ -9,17 +9,20 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomePage extends AppCompatActivity {
+public class Profile extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
+        setContentView(R.layout.activity_profile);
+        getSupportActionBar().setTitle("Profile");
+
         //Intialize and assign variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set Home Selected
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
+
 
         //Perform itemselected listener
 
@@ -29,6 +32,9 @@ public class HomePage extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
 
+                        startActivity(new Intent(getApplicationContext(),
+                                HomePage.class));
+                        overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.ratecard:
@@ -38,15 +44,14 @@ public class HomePage extends AppCompatActivity {
                         return true;
 
                     case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(),
-                                Profile.class));
-                        overridePendingTransition(0, 0);
+
                         return true;
 
                 }
-                    return false;
+                return false;
             }
         });
+
 
     }
 }

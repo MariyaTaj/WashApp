@@ -2,24 +2,31 @@ package com.example.washapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomePage extends AppCompatActivity {
+import java.util.ArrayList;
 
+public class RateCard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
-        //Intialize and assign variables
+        setContentView(R.layout.activity_rate_card);
+
+
+                 //Intialize and assign variables
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Set Home Selected
-        bottomNavigationView.setSelectedItemId(R.id.home);
+        bottomNavigationView.setSelectedItemId(R.id.ratecard);
 
         //Perform itemselected listener
 
@@ -29,12 +36,14 @@ public class HomePage extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
 
+                        startActivity(new Intent(getApplicationContext(),
+                                HomePage.class));
+                        overridePendingTransition(0, 0);
+
                         return true;
 
                     case R.id.ratecard:
-                        startActivity(new Intent(getApplicationContext(),
-                                RateCard.class));
-                        overridePendingTransition(0, 0);
+
                         return true;
 
                     case R.id.profile:
@@ -44,9 +53,12 @@ public class HomePage extends AppCompatActivity {
                         return true;
 
                 }
-                    return false;
+                return false;
             }
         });
 
+
     }
+
+
 }
